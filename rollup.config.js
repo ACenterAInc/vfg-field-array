@@ -67,7 +67,24 @@ function genConfig(name) {
         preferBuiltins: false,
         extensions: [".js", ".json", ".vue"]
       }),
-      commonjs(),
+      commonjs({
+        namedExports: {
+          "node_modules/lodash/lodash.js": [
+            "unionBy",
+            "union",
+            "reduce",
+            "find",
+            "get",
+            "isFunction",
+            "isString",
+            "isArray",
+            "forEach",
+            "includes",
+            "endsWith",
+            "cloneDeep"
+          ]
+        }
+      }),
       vue({ compileTemplate: true, css: true }),
       json(),
       babel({
